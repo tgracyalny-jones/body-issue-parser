@@ -1,0 +1,13 @@
+name: 'Hello World'
+description: 'Greet someone and record the time'
+author: "Trey Gracyalny"
+inputs:
+  body:
+    description: "Raw input string to be parsed"
+    required: true
+outputs:
+  refs:
+    description: "Referenced issue numbers in the same repository"
+runs:
+  using: "node20"
+  main: "src/index.js"
