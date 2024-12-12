@@ -17,6 +17,6 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          echo '${{ steps.hello.outputs.item }}' | jq '.[] | .action';
+          echo '${{ steps.hello.outputs.item }}' | jq '.[] | if .action == "Closes" then .issue else "Nothing"';
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
