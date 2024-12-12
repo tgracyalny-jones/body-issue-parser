@@ -29140,6 +29140,7 @@ module.exports = {
 
 
 const issueParser = __nccwpck_require__(864);
+const core = __nccwpck_require__(6201);
 const parse = issueParser("github");
 
 const parser = ({ body }) => {
@@ -29147,9 +29148,11 @@ const parser = ({ body }) => {
     const refs = parsed.refs;
     const actions = parsed.actions;
 
+    core.debug(actions);
     let output = [];
     
     for (let i = 0; i < actions.length; i++) {
+        core.debug(actions[i].close);
         output.push(actions[i].close.action);
     }
 
