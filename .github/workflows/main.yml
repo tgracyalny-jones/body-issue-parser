@@ -22,7 +22,7 @@ jobs:
           echo "${text[@]}"
           for issue in "$text[@]";
           do
-            echo "${$issue[@]}"
+            echo "${$issue}"
             if [ $issue[1] == "Closes" ]; then
               echo "${issue[1]}"
               gh issue close --comment "Auto-closing issue" $issue[0]
