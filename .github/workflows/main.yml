@@ -21,8 +21,8 @@ jobs:
           echo "${text[0]}"
           for issue in "$text[@]";
           do
+            printf '<< %s >>\n' "${issue[@]// /|}"
             if [ "$issue[1]" == "Closes" ]; then
-              echo "${issue[1]}"
               gh issue close --comment "Auto-closing issue" "$issue[0]"
             fi
           done
