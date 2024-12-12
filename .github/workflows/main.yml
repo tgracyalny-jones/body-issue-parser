@@ -21,6 +21,7 @@ jobs:
           echo "${text[*]}"
           echo "${text[@]}"
           for issue in "$text[@]";
+          echo "${$issue[@]}"
           do
             if [ $issue[1] == "Closes" ]; then
               echo ${issue[1]}
