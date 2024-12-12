@@ -17,9 +17,4 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: | 
-          for item in $ISSUE
-          do
-            echo "$item"
-          done
-        env:
-          ISSUE: ${{ fromJSON(steps.hello.outputs.item) }}
+          echo '${{ steps.hello.outputs.item }}' | jq '.issue[]'
