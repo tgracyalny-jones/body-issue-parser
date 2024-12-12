@@ -6,7 +6,7 @@ inputs:
     description: "Raw input string to be parsed"
     required: true
 outputs:
-  refs:
+  item:
     description: "Referenced issue numbers in the same repository"
 runs:
   using: "node20"
