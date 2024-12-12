@@ -20,9 +20,8 @@ jobs:
           echo "${{ steps.issues.outputs.item }}"
           text=$(echo "${{ steps.issues.outputs.item }}")
           echo "${text[0]}"
-          for issue in "$text[@]";
+          for issue in "$text";
           do
-            printf '<< %s >>\n' "${issue[@]// /|}"
             gh issue close --comment "Auto-closing issue" "$issue"
           done
         env:
