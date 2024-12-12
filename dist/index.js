@@ -29153,7 +29153,7 @@ const parser = ({ body }) => {
     
     for (let j = 0; j < actions.close.length; j++) {
         core.debug("DEBUG: ", actions.close[j].action);
-        let issue = [actions.close[j].issue, actions.close[j].action];
+        let issue = [" ", actions.close[j].issue, actions.close[j].action, " "];
         output.push(issue);
     }
 
