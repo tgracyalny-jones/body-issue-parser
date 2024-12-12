@@ -10,7 +10,7 @@ const parser = ({ body }) => {
 
     let output = [];
     
-    for (i = 0; i < actions.length; i++) {
+    for (let i = 0; i < actions.length; i++) {
         output.push(actions[i].close);
     }
 
