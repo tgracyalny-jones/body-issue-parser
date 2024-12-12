@@ -17,7 +17,8 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          for conversation in ${{ steps.issues.outputs.items }};
+          echo "ITEMS=$(${{ steps.issues.outputs.items }})"
+          for conversation in $ITEMS;
           do
             echo $conversation
             if [ $conversation.action == "Closes"]; then
