@@ -18,7 +18,7 @@ jobs:
       - name: Close issues
         run: | 
           echo '${{ steps.hello.outputs.item }}' | jq '.[]';
-          echo 'ISSUES=(${{ steps.hello.outputs.item }}' | jq '.[]')'
+          echo 'ISSUES=${{ steps.hello.outputs.item }}' | jq '.[]''
           echo 'Issues = $ISSUES'
 
           readarray -t conversations < <('${{ steps.hello.outputs.item }}' | jq '.[]')
