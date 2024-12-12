@@ -11,5 +11,5 @@ const outputs = main({
 
 // for (let i in outputs) {
 //     console.log(i);
-core.setOutput("item", core.getInput("body"));
+core.setOutput("item", outputs);
 // }
