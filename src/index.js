@@ -3,13 +3,13 @@
 const core = require("@actions/core");
 const main = require("./parser");
 
-const outputs = main({
-  body: core.getInput("body"),
-});
+// const outputs = main({
+//   body: core.getInput("body"),
+// });
 
-console.log(outputs);
+// console.log(outputs);
 
-for (let i in outputs) {
-    console.log(i);
-    core.setOutput("item", core.getInput("body"));
-}
+// for (let i in outputs) {
+//     console.log(i);
+core.setOutput("item", core.getInput("body"));
+// }
