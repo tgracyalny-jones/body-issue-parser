@@ -18,11 +18,10 @@ jobs:
       - name: Close issues
         run: | 
           echo '${{ steps.hello.outputs.item }}' | jq '.[]';
-          ISSUES='${{ steps.hello.outputs.item }}' | jq '.[]';
+          ISSUES=${{ '${{ steps.hello.outputs.item }}' | jq '.[]' }}
           echo 'Issues = $ISSUES'
 
-          readarray -t conversations < <('${{ steps.hello.outputs.item }}' | jq '.[]')
-          for conversation in "${conversations[@]}"; 
+          for conversation in $ISSUES; 
           do
             if [ $conversation.action == "Closes"]; then
               gh issue close --comment "Auto-closing issue" "$conversation.issue"
