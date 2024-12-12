@@ -17,8 +17,8 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          ISSUES = $(echo '${{ steps.hello.outputs.item }}' | jq '.[] | if .action == "Closes" then .issue else "" end';)
-          echo "ISSUES : $ISSUES"
+          ISSUES = $(echo '${{ steps.hello.outputs.item }}' | jq '.[] | if .action == "Closes" then .issue else "" end')
+          echo "Issues: $ISSUES"
 
           for i in $ISSUES
           do
