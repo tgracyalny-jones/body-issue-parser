@@ -19,9 +19,11 @@ jobs:
         run: | 
           text=$(echo "${{ fromJSON(steps.issues.outputs.item) }}" | sed 's/\[/ [ /g; s/]/ ] /g;')
           echo ${text}
+          echo ${text[0]}
           for issue in $text;
           do
             if [ $issue[1] == "Closes" ]; then
+              echo ${issue[1]}
               gh issue close --comment "Auto-closing issue" $issue[0]
             fi
           done
