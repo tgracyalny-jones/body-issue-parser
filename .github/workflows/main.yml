@@ -17,4 +17,4 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          echo '${{ steps.hello.outputs.item }}' | jq '.[]' | if .action == "Closes" then gh issue close --comment "Auto-closing issue" ".issue" end
+          echo '${{ steps.hello.outputs.item }}' | jq '.[]' | if .action == "Closes" then gh issue close --comment "Auto-closing issue" ".issue"
