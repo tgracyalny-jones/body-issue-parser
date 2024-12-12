@@ -11,22 +11,10 @@ const parser = ({ body }) => {
     let output = [];
     
     for (let i = 0; i < actions.length; i++) {
-        output.push(actions[i].close);
+        output.push(actions[i].close.action);
     }
 
     return output.join(",");
-
-
-    for (i = 0; i < refs.length; i++) {
-        // output[i] = {
-        //     key: refs[i].issue,
-        //     value: 
-        //         actions.filter()
-        // }
-    }
-
-
-    return outputs;
   };
   
   module.exports = parser;
