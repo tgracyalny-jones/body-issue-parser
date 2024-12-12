@@ -15,18 +15,13 @@ jobs:
         with:
           body: 'Closes #1'
       # Use the output from the `hello` step
-      - name: Get Issues
-        id: issues
-        run: |
-          echo "items=${{ steps.hello.outputs.item }} | jq -c '.[]'" >> $GITHUB_OUTPUT
       - name: Close issues
         run: | 
           echo ${{ steps.issues.outputs.items }}
 
-          readarray -t conversations < <(${{ steps.hello.outputs.item }} | jq -c '.[]')
-          echo $conversations
-
-          for conversation in ${{ steps.hello.outputs.item }} | jq -c '.[]'; 
+          readarray -t conversations << (${{ steps.hello.outputs.item }} | jq -c '.[]')
+          echo conversations
+          for conversation in ${$conversations[@]};
           do
             echo $conversation
             if [ $conversation.action == "Closes"]; then
