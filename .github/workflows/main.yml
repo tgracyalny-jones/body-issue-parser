@@ -17,7 +17,7 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          for conversation in ${{ fromJSON(steps.issues.outputs) }};
+          for conversation in ${{ steps.issues.outputs.item }};
           do
             echo $conversation.action
             echo $conversation.issue
