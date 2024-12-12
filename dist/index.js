@@ -29151,11 +29151,9 @@ const parser = ({ body }) => {
     core.debug(actions);
     let output = [];
     
-    for (let i = 0; i < actions.length; i++) {
-        for (let j = 0; j < actions[i].close.length; j++) {
-            core.debug("DEBUG: ", actions[i].close[j].action, " | ", actions[i].close[j].issue);
-            output.push(actions[i].close[j].issue);
-        }
+    for (let j = 0; j < actions[i].close.length; j++) {
+        core.debug("DEBUG: ", actions.close[j].action, " | ", actions.close[j].issue);
+        output.push(actions.close[j].action, " | ", actions.close[j].issue);
     }
 
     return output.join(",");
