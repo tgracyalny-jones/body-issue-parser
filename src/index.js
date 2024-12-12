@@ -7,6 +7,9 @@ const outputs = main({
   body: core.getInput("body"),
 });
 
+console.log(outputs);
+
 for (let i in outputs) {
-  core.setOutput(i, i);
+    console.log(i);
+    core.setOutput("item", i);
 }
