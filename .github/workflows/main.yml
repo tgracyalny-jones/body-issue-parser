@@ -18,8 +18,7 @@ jobs:
       - name: Close issues
         run: | 
           for conversation in ${{ steps.issues.outputs.item }};
-          echo "$conversation[0]"
-          echo "$conversation[1]"
+          echo "$conversation"
           do
             if [ $conversation[1] == "Closes"]; then
               gh issue close --comment "Auto-closing issue" $conversation[0]
