@@ -1,27 +1,22 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  parse-pr:
     runs-on: ubuntu-latest
     permissions: write-all
-    name: A job to say hello
+    name: Parse PR for any Closed Issues
     steps:
-      # To use this repository's private action,
-      # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v4
       - name: Hello world action step
-        uses: tgracyalny-jones/pr-body-parser@main # Uses an action in the root directory
+        uses: tgracyalny-jones/pr-body-parser@main
         id: issues
         with:
           body: 'Closes #1 Closes #2'
-      # Use the output from the `hello` step
       - name: Close issues
         run: | 
           echo "${{ steps.issues.outputs.item }}"
-          text=($(echo "${{ steps.issues.outputs.item }}" | jq -r '.[]'))
-          echo "TEST: ${text[@]}"
-          for issue in "$text";
+          for issue in "$issues";
           do
             gh issue close --comment "Auto-closing issue" "$issue"
           done

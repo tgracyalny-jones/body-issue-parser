@@ -1,13 +1,13 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Body Issue Parser'
+description: 'Scans a given body text (typically from PR) and returns any that need to be closed'
 author: "Trey Gracyalny"
 inputs:
   body:
-    description: "Raw input string to be parsed"
+    description: "Body containing references to Closed Issues"
     required: true
 outputs:
   item:
-    description: "Referenced issue numbers in the same repository"
+    description: "Array of Issue Id's located inside given body"
 runs:
   using: "node20"
   main: "dist/index.js"
