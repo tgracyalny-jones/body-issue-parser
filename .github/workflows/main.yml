@@ -18,9 +18,8 @@ jobs:
       - name: Close issues
         run: | 
           echo "${{ steps.issues.outputs.item }}"
-          text=$(echo "${{ steps.issues.outputs.item }}" | sed 's/\[/ [ /g; s/]/ ] /g;')
+          text=$(echo "${{ steps.issues.outputs.item }}")
           echo "${text[0]}"
-          printf '<< %s >>\n' "${text[@]// /|}"
           for issue in "$text[@]";
           do
             printf '<< %s >>\n' "${issue[@]// /|}"
