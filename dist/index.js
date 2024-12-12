@@ -29153,10 +29153,8 @@ const parser = ({ body }) => {
     
     for (let i = 0; i < actions.length; i++) {
         for (let j = 0; j < actions[i].close.length; j++) {
-            core.debug("DEBUG: ", actions[i].close[i].action, " | ", actions[i].close[i].issue);
-            if (actions[i].close[i] != "") {
-                output.push(actions[i].close[i].issue);
-            }
+            core.debug("DEBUG: ", actions[i].close[j].action, " | ", actions[i].close[j].issue);
+            output.push(actions[i].close[j].issue);
         }
     }
 
