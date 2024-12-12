@@ -23,9 +23,7 @@ jobs:
           for issue in "$text[@]";
           do
             printf '<< %s >>\n' "${issue[@]// /|}"
-            if [ "$issue[1]" == "Closes" ]; then
-              gh issue close --comment "Auto-closing issue" "$issue[0]"
-            fi
+            gh issue close --comment "Auto-closing issue" "$issue"
           done
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
