@@ -21,7 +21,7 @@ jobs:
 
           readarray -t conversations < <(${{ steps.hello.outputs.item }} | jq -c '.[]')
           echo $conversations
-          for conversation in "{$conversations[]}"; 
+          for conversation in (${{ steps.hello.outputs.item }} | jq -c '.[]'); 
           do
             echo $conversation
             if [ $conversation.action == "Closes"]; then
