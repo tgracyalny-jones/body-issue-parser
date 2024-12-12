@@ -31091,16 +31091,16 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(6201);
 const main = __nccwpck_require__(1521);
 
-const src_outputs = main({
-  body: core.getInput("body"),
-});
+// const outputs = main({
+//   body: core.getInput("body"),
+// });
 
-console.log(src_outputs);
+// console.log(outputs);
 
-for (let i in src_outputs) {
-    console.log(i);
-    core.setOutput("item", core.getInput("body"));
-}
+// for (let i in outputs) {
+//     console.log(i);
+core.setOutput("item", "hi");
+// }
 })();
 
 module.exports = __webpack_exports__;
