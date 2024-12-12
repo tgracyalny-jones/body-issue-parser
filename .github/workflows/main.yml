@@ -18,10 +18,9 @@ jobs:
       - name: Close issues
         run: | 
           text=$(echo "${{ steps.issues.outputs.item }}" | sed 's/\[/ [ /g; s/]/ ] /g;')
-          echo "${text[0]}"
+          echo "${text[1]}"
           for issue in "$text[@]";
           do
-            echo "${$issue}"
             if [ $issue[1] == "Closes" ]; then
               echo "${issue[1]}"
               gh issue close --comment "Auto-closing issue" $issue[0]
