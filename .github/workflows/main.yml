@@ -17,11 +17,9 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          files=(${{ steps.issues.outputs.item }})
+          files=${{ steps.issues.outputs.item }}
+          echo "${$files[@]}"
           for conversation in "${files[@]}";
-          echo "${$conversation[@]}"
-          echo "${$conversation[0]}"
-          echo "${$conversation[1]}"
           do
             if [ $conversation[1] == "Closes"]; then
               gh issue close --comment "Auto-closing issue" $conversation[0]
