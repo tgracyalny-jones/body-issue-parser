@@ -17,7 +17,9 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          readarray -t conversations < <(${{ steps.hello.outputs.item }} | jq '.[]')
+          echo '${{ steps.hello.outputs.item }}' | jq '.[]';
+
+          readarray -t conversations < <('${{ steps.hello.outputs.item }}' | jq '.[]')
           for conversation in "${conversations[@]}"; 
           do
             if [ $conversation.action == "Closes"]; then
