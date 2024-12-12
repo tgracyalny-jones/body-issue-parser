@@ -17,10 +17,11 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          readarray -t conversations < <(${{ steps.hello.outputs.item }} | jq -c '.[] | if .action == "Closes" then .issue else 0 end')
+          readarray -t conversations < <(${{ steps.hello.outputs.item }} | jq '.[]')
           for conversation in "${conversations[@]}"; 
           do
-            gh issue close --comment "Auto-closing issue" "$conversation"
+            if [ $conversation.action == "Closes"]; then
+              gh issue close --comment "Auto-closing issue" "$conversation.issue"
           done
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
