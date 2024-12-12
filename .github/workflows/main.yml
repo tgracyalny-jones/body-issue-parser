@@ -21,7 +21,10 @@ jobs:
           ISSUES='${{ steps.hello.outputs.item }}' | jq '.[]'
           echo 'Issues = $ISSUES'
 
+          
+
           for conversation in $ISSUES; 
+          echo '$conversation'
           do
             if [ $conversation.action == "Closes"]; then
               gh issue close --comment "Auto-closing issue" "$conversation.issue"
