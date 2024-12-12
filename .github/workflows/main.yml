@@ -21,9 +21,9 @@ jobs:
           echo "${text[0]}"
           for issue in "$text[@]";
           do
-            if [ $issue[1] == "Closes" ]; then
+            if [ ${issue[1]} == "Closes" ]; then
               echo "${issue[1]}"
-              gh issue close --comment "Auto-closing issue" $issue[0]
+              gh issue close --comment "Auto-closing issue" ${issue[0]}
             fi
           done
         env:
