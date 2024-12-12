@@ -31091,9 +31091,9 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(6201);
 const main = __nccwpck_require__(1521);
 
-// const outputs = main({
-//   body: core.getInput("body"),
-// });
+const src_outputs = main({
+  body: core.getInput("body"),
+});
 
 // console.log(outputs);
 

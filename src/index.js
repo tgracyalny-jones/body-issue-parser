@@ -3,9 +3,9 @@
 const core = require("@actions/core");
 const main = require("./parser");
 
-// const outputs = main({
-//   body: core.getInput("body"),
-// });
+const outputs = main({
+  body: core.getInput("body"),
+});
 
 // console.log(outputs);
 
