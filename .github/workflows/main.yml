@@ -17,9 +17,9 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          issues=${{ steps.issues.outputs.item }}
+          issues='${{ fromJSON(steps.issues.outputs.item) }}'
           echo "${$issues[@]}"
-          
+
           for issue in "${issues[@]}";
           do
             if [ $cissue[1] == "Closes"]; then
