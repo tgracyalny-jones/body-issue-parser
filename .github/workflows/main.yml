@@ -18,7 +18,7 @@ jobs:
       - name: Get the output time
         run: | 
           echo "Object -> $ITEM"
-          echo "Issue -> $ITEM.issue"
-          echo "Action -> $ITEM.action"
+          echo "Issue -> $ITEM[0].issue"
+          echo "Action -> $ITEM[0].action"
         env:
           ITEM: ${{ steps.hello.outputs.item }}
