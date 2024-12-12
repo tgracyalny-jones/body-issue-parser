@@ -29152,8 +29152,12 @@ const parser = ({ body }) => {
     let output = [];
     
     for (let i = 0; i < actions.length; i++) {
-        core.debug(actions[i].close);
-        output.push(actions[i].close.action);
+        for (let j = 0; j < actions[i].close; j++) {
+            core.debug("DEBUG: ", actions[i].close[i].action, " | ", actions[i].close[i].issue);
+            if (actions[i].close[i] != "") {
+                output.push(actions[i].close[i].issue);
+            }
+        }
     }
 
     return output.join(",");
