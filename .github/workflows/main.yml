@@ -19,10 +19,8 @@ jobs:
         run: | 
           for conversation in ${{ steps.issues.outputs.item }};
           do
-            echo $conversation.action
-            echo $conversation.issue
-            if [ $conversation.action == "Closes"]; then
-              gh issue close --comment "Auto-closing issue" "$conversation.issue"
+            if [ $conversation[1] == "Closes"]; then
+              gh issue close --comment "Auto-closing issue" "$conversation[0]"
             fi
           done
         env:
