@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
+        uses: tgracyalny-jones/pr-body-parser@main # Uses an action in the root directory
         id: hello
         with:
           body: 'Mona the Octocat'
