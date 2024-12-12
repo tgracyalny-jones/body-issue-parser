@@ -16,4 +16,6 @@ jobs:
           body: 'Closes #1'
       # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.item }}"
+        run: | 
+          echo "Issue -> ${{ steps.hello.outputs.item[0].issue }}"
+          echo "Action -> ${{ steps.hello.outputs.item[0].action }}"
