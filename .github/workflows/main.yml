@@ -17,8 +17,6 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: | 
-          echo "Object -> ${{ fromJSON(ITEM) }}"
-          echo "Issue -> ${{ fromJSON(ITEM[0]).issue }}"
-          echo "Action -> ${{ fromJSON(ITEM[0]).action }}"
+          echo "Issue -> $ISSUE"
         env:
-          ITEM: ${{ steps.hello.outputs.item }}
+          ISSUE: ${{ fromJSON(steps.hello.outputs.item)[0].issue }}
