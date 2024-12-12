@@ -18,7 +18,7 @@ jobs:
       - name: Close issues
         run: | 
           text=$(echo "${{ fromJSON(steps.issues.outputs.item) }}" | sed 's/\[/ [ /g; s/]/ ] /g;')
-          echo "${text[1]}"
+          echo "${text[0]}"
           for issue in "$text[@]";
           do
             if [ $issue[1] == "Closes" ]; then
