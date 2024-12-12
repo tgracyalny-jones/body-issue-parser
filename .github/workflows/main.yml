@@ -23,7 +23,6 @@ jobs:
           echo "TEST: ${text[@]}"
           for issue in "$text";
           do
-            echo ${$issue}
             gh issue close --comment "Auto-closing issue" "$issue"
           done
         env:
