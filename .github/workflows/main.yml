@@ -20,9 +20,10 @@ jobs:
           echo "ISSUES =['${{ steps.hello.outputs.item }}' | jq '.[] | if .action == "Closes" then .issue else 0 end']"
           echo "Issues: $ISSUES"
 
-          for i in $ISSUES
+          readarray -t conversations < <(${{ steps.hello.outputs.item }} | jq -c '.[]')
+          for conversation in "${conversations[@]}"; 
           do
-            gh issue close --comment "Auto-closing issue" i
+            gh issue close --comment "Auto-closing issue" "$conversation"
           done
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
