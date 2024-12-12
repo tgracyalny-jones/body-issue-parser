@@ -17,7 +17,8 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          for issue in '${{ fromJSON(steps.issues.outputs.item) }}';
+          text=$(echo "${{ fromJSON(steps.issues.outputs.item) }}" | sed 's/\[/ [ /g; s/]/ ] /g; s/\(/ ( /g; s/\)/ ) /g')
+          for issue in $text;
           do
             if [ $issue[1] == "Closes"]; then
               gh issue close --comment "Auto-closing issue" $issue[0]
