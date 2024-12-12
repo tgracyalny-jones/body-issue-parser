@@ -21,4 +21,4 @@ jobs:
           echo "Issue -> $ITEM.issue"
           echo "Action -> $ITEM.action"
         env:
-          ITEM: ${{ fromJson(steps.hello.outputs.item) }}
+          ITEM: ${{ steps.hello.outputs.item }}
