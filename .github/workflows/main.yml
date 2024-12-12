@@ -17,5 +17,5 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: | 
-          echo "Issue -> ${{ steps.hello.outputs.item[0].issue }}"
-          echo "Action -> ${{ steps.hello.outputs.item[0].action }}"
+          echo "Issue -> ${{ steps.hello.outputs.item.issue }}"
+          echo "Action -> ${{ steps.hello.outputs.item.action }}"
