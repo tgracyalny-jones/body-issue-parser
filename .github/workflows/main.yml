@@ -13,8 +13,8 @@ jobs:
         uses: tgracyalny-jones/pr-body-parser@main # Uses an action in the root directory
         id: hello
         with:
-          body: 'Closes #1 Closes #2 Fix #35'
+          body: 'Closes #1'
       # Use the output from the `hello` step
-      - name: Get the output time
+      - name: Close issues
         run: | 
-          echo '${{ steps.hello.outputs.item }}' | jq foreach .[] as $item | {$item}
+          echo '${{ steps.hello.outputs.item }}' | jq '.[]' | if .action == "Closes" then gh issue close --comment "Auto-closing issue" ".issue" end
