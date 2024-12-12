@@ -17,4 +17,4 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: | 
-          echo '${{ steps.hello.outputs.item }}' | jq '.issue[]'
+          echo '${{ steps.hello.outputs.item }}' | jq '.[]'
