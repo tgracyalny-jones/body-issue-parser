@@ -13,8 +13,14 @@ const parser = ({ body }) => {
     let output = [];
     
     for (let j = 0; j < actions.close.length; j++) {
-        core.debug("DEBUG: ", actions.close[j].action, " | ", actions.close[j].issue);
-        output.push(actions.close[j].action, " | ", actions.close[j].issue);
+        core.debug("DEBUG: ", actions.close[j].action);
+        let issue = 
+        {
+            action: actions.close[j].action,
+            issue: actions.close[j].issue
+        }
+
+        output.push(issue);
     }
 
     return output.join(",");
