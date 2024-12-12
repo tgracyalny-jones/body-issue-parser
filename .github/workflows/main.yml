@@ -18,7 +18,7 @@ jobs:
       - name: Get Issues
         id: issues
         run: |
-          echo "items=$('${{ steps.hello.outputs.item }}' | jq '.[]')" >> $GITHUB_OUTPUT
+          echo "items=$(${{ steps.hello.outputs.item }} | jq '.[]')" >> $GITHUB_OUTPUT
       - name: Close issues
         run: | 
           echo ${{ steps.issues.outputs.items }}
