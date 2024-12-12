@@ -8,9 +8,13 @@ const parser = ({ body }) => {
     const refs = parsed.refs;
     const actions = parsed.actions;
 
-    return refs;
-    
     let output = [];
+    for (const action in actions) {
+        output.push(action);
+    }
+
+    return output.join(",");
+
 
     for (i = 0; i < refs.length; i++) {
         // output[i] = {
