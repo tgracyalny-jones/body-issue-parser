@@ -23,7 +23,7 @@ const parser = ({ body }) => {
         output.push(issue);
     }
 
-    return output.join(",");
+    return output;
   };
   
   module.exports = parser;

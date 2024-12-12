@@ -22,3 +22,6 @@ jobs:
           echo "Action -> $ITEM.action"
         env:
           ITEM: ${{ fromJson(steps.hello.outputs.item) }}
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"

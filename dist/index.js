@@ -29162,7 +29162,7 @@ const parser = ({ body }) => {
         output.push(issue);
     }
 
-    return output.join(",");
+    return output;
   };
   
   module.exports = parser;
@@ -31101,7 +31101,7 @@ const outputs = main({
 
 // for (let i in outputs) {
 //     console.log(i);
-core.setOutput("item", outputs);
+core.setOutput("item", JSON.stringify(outputs));
 // }
 })();
 
