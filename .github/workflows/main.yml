@@ -18,7 +18,7 @@ jobs:
       - name: Close issues
         run: | 
           echo "${{ steps.issues.outputs.item }}"
-          text=$(echo "${{ steps.issues.outputs.item }}" | jq -r '.[]'))
+          text=($(echo "${{ steps.issues.outputs.item }}" | jq -r '.[]'))
           echo "TEST: ${text[@]}"
           for issue in "$text";
           do
