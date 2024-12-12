@@ -17,7 +17,7 @@ jobs:
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
-          text=$(echo "${{ fromJSON(steps.issues.outputs.item) }}" | sed 's/\[/ [ /g; s/]/ ] /g;')
+          text=$(echo "${{ steps.issues.outputs.item }}" | sed 's/\[/ [ /g; s/]/ ] /g;')
           echo "${text[*]}"
           echo "${text[@]}"
           for issue in "$text[@]";
