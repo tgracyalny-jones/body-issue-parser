@@ -13,7 +13,7 @@ jobs:
         uses: tgracyalny-jones/pr-body-parser@main # Uses an action in the root directory
         id: issues
         with:
-          body: 'Closes #1'
+          body: 'Closes #1 Closes #2'
       # Use the output from the `hello` step
       - name: Close issues
         run: | 
