@@ -15,9 +15,16 @@ jobs:
         with:
           body: 'Closes #1'
       # Use the output from the `hello` step
+      - name: Get Issues
+        id: issues
+        run: |
+          echo "items=$(${{ steps.hello.outputs.item }}' | jq '.[]')" >> $GITHUB_OUTPUT
       - name: Close issues
         run: | 
-          echo '${{ steps.hello.outputs.item }}' | jq '.[]';
+          echo ${{ steps.issues.outputs.items }}
+
+          readarray -t conversations < <(${{ steps.hello.outputs.item }} | jq -c '.[]')
+          echo $conversations
 
           for conversation in ${{ steps.hello.outputs.item }} | jq -c '.[]'; 
           do
