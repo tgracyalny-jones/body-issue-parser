@@ -19,7 +19,7 @@ jobs:
         run: | 
           for issue in '${{ fromJSON(steps.issues.outputs.item) }}';
           do
-            if [ $cissue[1] == "Closes"]; then
+            if [ $issue[1] == "Closes"]; then
               gh issue close --comment "Auto-closing issue" $issue[0]
             fi
           done
