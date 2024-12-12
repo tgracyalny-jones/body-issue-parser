@@ -19,8 +19,8 @@ jobs:
         run: | 
           echo "${{ steps.issues.outputs.item }}"
           text=$(echo "${{ steps.issues.outputs.item }}")
-          echo "${text[0]}"
-          for issue in "$text";
+          echo "TEST: ${text[0]}"
+          for issue in "$([ 1,2 ]));
           do
             gh issue close --comment "Auto-closing issue" "$issue"
           done
