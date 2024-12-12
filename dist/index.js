@@ -31099,7 +31099,7 @@ const main = __nccwpck_require__(1521);
 
 // for (let i in outputs) {
 //     console.log(i);
-core.setOutput("item", "hi");
+core.setOutput("item", core.getInput("body"));
 // }
 })();
 
