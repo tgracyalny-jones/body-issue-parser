@@ -18,7 +18,7 @@ jobs:
       - name: Close issues
         run: | 
           echo '${{ steps.hello.outputs.item }}' | jq '.[]';
-          ISSUES=${{ '${{ steps.hello.outputs.item }}' | jq '.[]' }}
+          ISSUES='${{ steps.hello.outputs.item }}' | jq '.[]'
           echo 'Issues = $ISSUES'
 
           for conversation in $ISSUES; 
