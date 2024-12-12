@@ -29148,8 +29148,8 @@ const parser = ({ body }) => {
     const actions = parsed.actions;
 
     let output = [];
-    for (const action in actions) {
-        output.push(action);
+    for (const action in actions.close) {
+        output.push(action.action);
     }
 
     return output.join(",");
