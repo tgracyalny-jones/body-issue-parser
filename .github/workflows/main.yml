@@ -3,6 +3,7 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
+    permissions: write-all
     name: A job to say hello
     steps:
       # To use this repository's private action,
@@ -16,7 +17,6 @@ jobs:
           body: 'Closes #1 Closes #2'
       # Use the output from the `hello` step
       - name: Close issues
-        permissions: write-all
         run: | 
           echo "${{ steps.issues.outputs.item }}"
           text=($(echo "${{ steps.issues.outputs.item }}" | jq -r '.[]'))
