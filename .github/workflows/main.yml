@@ -22,7 +22,7 @@ jobs:
           readarray -t conversations < <('${{ steps.hello.outputs.item }}' | jq -c '.[]')
           for conversation in "$conversations[]"; 
           do
-            echo '$conversation'
+            echo $conversation
             if [ $conversation.action == "Closes"]; then
               gh issue close --comment "Auto-closing issue" "$conversation.issue"
             fi
