@@ -10,7 +10,7 @@ const parser = ({ body }) => {
 
     let output = [];
     for (const action in actions.close) {
-        output.push(action.action);
+        output.push(action);
     }
 
     return output.join(",");
