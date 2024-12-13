@@ -15,8 +15,8 @@ jobs:
           body: 'Closes #1 Closes #2'
       - name: Close issues
         run: | 
-          echo "issues=${{ steps.issues.outputs.item }}"
-          if issues != ""; then
+          issues=($(echo "${{ steps.custom.outputs.issues }}" | jq -r '.[]'))
+          if issues != []; then
             for issue in "$issues";
             do
               gh issue close --comment "Auto-closing issue" "$issue"
