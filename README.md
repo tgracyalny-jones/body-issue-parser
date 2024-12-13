@@ -37,11 +37,14 @@ jobs:
           body: 'Closes #1 Closes #2'
       - name: Close issues
         run: | 
-          echo "issues=${{ steps.issues.outputs.item }}"
-          for issue in "$issues";
-          do
-            gh issue close --comment "Auto-closing issue" "$issue"
-          done
+          issues=($(echo "${{ steps.custom.outputs.issues }}" | jq -r '.[]'))
+          if ! [[ -z $issues ]]; then
+            for issue in "$issues";
+            do
+              gh issue close --comment "Auto-closing issue" "$issue"
+            done
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+Make sure to check for an empty array incase it returns nothing
