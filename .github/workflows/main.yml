@@ -16,9 +16,11 @@ jobs:
       - name: Close issues
         run: | 
           echo "issues=${{ steps.issues.outputs.item }}"
-          for issue in "$issues";
-          do
-            gh issue close --comment "Auto-closing issue" "$issue"
-          done
+          if issues != ""; then
+            for issue in "$issues";
+            do
+              gh issue close --comment "Auto-closing issue" "$issue"
+            done
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
