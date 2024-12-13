@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Hello world action step
-        uses: tgracyalny-jones/pr-body-parser@main
+        uses: tgracyalny-jones/body-issue-parser@v1.0
         id: issues
         with:
           body: 'Closes #1 Closes #2'
