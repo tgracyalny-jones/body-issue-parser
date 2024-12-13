@@ -29140,17 +29140,13 @@ module.exports = {
 
 
 const issueParser = __nccwpck_require__(864);
-const core = __nccwpck_require__(6201);
 const parse = issueParser("github");
 
 const parser = ({ body }) => {
     const parsed = parse(body);
-    const refs = parsed.refs;
     const actions = parsed.actions;
 
-    core.debug(actions);
     let output = [];
-    
     for (let j = 0; j < actions.close.length; j++) {
         output.push(actions.close[j].issue);
     }
@@ -31090,14 +31086,7 @@ const outputs = main({
   body: core.getInput("body"),
 });
 
-// console.log(outputs);
-
-// for (let i in outputs) {
-//     console.log(i);
-
-let issues = JSON.stringify(outputs);
-core.setOutput("item", issues);
-// }
+core.setOutput("issues", JSON.stringify(outputs));
 })();
 
 module.exports = __webpack_exports__;

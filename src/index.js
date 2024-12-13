@@ -7,4 +7,4 @@ const outputs = main({
   body: core.getInput("body"),
 });
 
-core.setOutput("item", JSON.stringify(outputs));
+core.setOutput("issues", JSON.stringify(outputs));
